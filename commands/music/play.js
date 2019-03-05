@@ -4,6 +4,7 @@ const ytdl = require("ytdl-core");
 const YouTube = require("simple-youtube-api");
 const config = require("../../config.json");
 
+
 module.exports = class PlayCommand extends commando.Command {
 
     constructor(client) {
@@ -56,7 +57,7 @@ module.exports = class PlayCommand extends commando.Command {
 
             // If content is a query, search youtube 
         } else {
-            const api = new YouTube(process.env.YouTubeAPI);
+            const api = new YouTube(config.youtubeKey);
             splitted.shift();
 
             await api
@@ -70,7 +71,7 @@ module.exports = class PlayCommand extends commando.Command {
                 })
                 .catch(console.error);
         }
-        const api = new YouTube(process.env.YouTubeAPI);
+        const api = new YouTube(config.youtubeKey);
         let video = await api.searchVideos(splitted.join(" "), 5)
         let title = video.title
         console.log(title)
