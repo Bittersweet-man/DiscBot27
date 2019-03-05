@@ -38,9 +38,10 @@ var playQueue = [];
 global.servers = new discord.Collection();
 bot.on('ready', () => {
     console.log("Ready");
-   // const channel = bot.channels.get('538707114781179904')
+const channel = bot.channels.get('538707114781179904')
 
-const channel = bot.channels.get("538707114781179904")
+
+
     channel.send("I am online!")
     bot.user.setActivity("Type ?help", {
         type: 'PLAYING'
@@ -90,8 +91,15 @@ bot.on("guildMemberRemove", function (member) {
 
 
 bot.on('message', function (message) {
+  
+  
 
     if (message.author.bot) return;
+  
+  
+  
+  
+  
     db.each(`Select xp, level FROM table_name WHERE id="${message.author.id}"`, function (err, row) {
         let xp = Math.floor(Math.random() * 10) + 5
         //console.log(xp)
@@ -107,12 +115,33 @@ bot.on('message', function (message) {
         }
 
         db.run(`UPDATE table_name SET xp=${test}, level=${curLvl}, name="${message.member.displayName}" WHERE id=${message.author.id}`)
+
     })
 
 
+  
+  if(message.content == "test") {
+    db.each(`SELECT * FROM table_name WHERE id=${message.author.id}`, function (err, row) {
+            console.log(row)
+      if(err) console.log(err)
+      if(row != []){
+       console.log("in db") 
+        message.channel.send("in db")
+  
+        return;
+      }
+      if(row = null){
+        console.log("not in db")
+        message.channel.send("not in db")
+      }
+
+    })
+  
+  }
+
     if (message.content == "insert") {
         var user = message.member.displayName
-        db.run(`INSERT INTO table_name (id, xp, level, color, name) VALUES (${message.author.id}, 1, 1, #fce300, "${message.member.displayName}")`);
+        db.run(`INSERT INTO table_name (id, xp, level, color, name) VALUES (${message.author.id}, 1, 1, "#fce300", "${message.member.displayName}")`);
         message.channel.send("ran")
     }
 

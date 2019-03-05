@@ -13,16 +13,16 @@ const applyText = (canvas, text) => {
 
     do {
         // Assign the font to the context and decrement it so it can be measured again
-        ctx.font = `${fontSize -= 10}px sans-serif`;
+        ctx.font = `bold ${fontSize -= 20}px sans-serif`;
         // Compare pixel width of the text to the canvas minus the approximate avatar size
     } while (ctx.measureText(text).width > canvas.width - 300);
 
     // Return the result to use in the actual canvas
     return ctx.font;
 };
-procent = 0,
-    oneProcent = 360 / 100,
-    result = oneProcent * 64;
+var procent = 0,
+   oneProcent = 360 / 100,
+   result = oneProcent * 64;
 
 class CanvasCommand extends Commando.Command {
     constructor(client, ) {
@@ -62,7 +62,7 @@ class CanvasCommand extends Commando.Command {
             // Add an exclamation point here and below
             ctx.font = applyText(canvas, `${user.displayName}`);
             ctx.fillStyle = '#ffffff';
-            ctx.fillText(`${user.displayName}`, 25, 130);
+            ctx.fillText(`${user.tag}`, 25, 130);
             
             
             
@@ -83,14 +83,14 @@ class CanvasCommand extends Commando.Command {
 
             ctx.font = '50px sans-serif'
             ctx.fillStyle = '#ffffff'
-            ctx.fillText(`XP to Next Level:`, canvas.width / 2.5, canvas.height / 2.29)
+            ctx.fillText(`XP to Next Level:`, canvas.width / 2.5 - 30, canvas.height / 2.29)
             let curXp = row.xp
             let curLvl = row.level
             let nxtLvlXp = (curLvl * 200) * 1.2;
             let difference = nxtLvlXp - curXp
             ctx.font = '50px sans-serif'
             ctx.fillStyle = '#ffffff'
-            ctx.fillText(`${difference}`, canvas.width / 2.5, canvas.height / 1.91)
+            ctx.fillText(`${difference}`, canvas.width / 2.5 - 30, canvas.height / 1.91)
             //ctx.beginPath();
             //ctx.ellipse(450, 600, 200, 25, Math.PI / 90, 0, 2 * Math.PI);
             //ctx.stroke();
@@ -99,7 +99,7 @@ class CanvasCommand extends Commando.Command {
             ctx.font = '40px sans-serif'
             ctx.fillStyle = '#ffffff'
             let percent = Math.floor((curXp / nxtLvlXp) * 100)
-            ctx.fillText(`${percent}%`, 520, 650)
+            ctx.fillText(`${percent}%`, 520, 675)
 
 
 
