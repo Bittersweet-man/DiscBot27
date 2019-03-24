@@ -1,6 +1,6 @@
 dependencies:
-  canvas: 2.3.1
-  canvas-constructor: 2.1.1
+  canvas: 2.4.0
+  canvas-constructor: 3.0.1
   discord-youtube-api: 0.1.0
   discord.js: 11.4.2
   discord.js-commando: 0.10.0
@@ -16,6 +16,7 @@ dependencies:
   rebuild: 0.1.2
   simple-youtube-api: 5.1.1
   snekfetch: 4.0.4
+  sqlite: 3.0.2
   sqlite3: 4.0.6
   superagent: 4.1.0
   wiring-op: 2.1.1
@@ -249,24 +250,24 @@ packages:
       node: '>= 0.8'
     resolution:
       integrity: sha1-0ygVQE1olpn4Wk6k+odV3ROpYEg=
-  /canvas-constructor/2.1.1:
+  /canvas-constructor/3.0.1:
     dev: false
     engines:
       node: '>=8.6.0'
     peerDependencies:
       canvas: '*'
     resolution:
-      integrity: sha512-FFbLj5bHigNneiTo0UNt9PPRLrJCX0QHwrgJVJmywPaeqYNbBsrRSKtlEK8tL7XTRdz781BhQCDw/NGoVil2Dw==
-  /canvas/2.3.1:
+      integrity: sha512-p0zIefgmwEJ/iE9YhMeXdhibd+NXBpvKKgfwSGlbdrf4UfU+qIpBEUdLfxvlT5yHhc8G8TxrK4GS9IMgK1lhtA==
+  /canvas/2.4.0:
     dependencies:
-      nan: 2.12.1
+      nan: 2.13.1
       node-pre-gyp: 0.11.0
     dev: false
     engines:
       node: '>=6'
     requiresBuild: true
     resolution:
-      integrity: sha512-jSxwf4V9AGD6t6yBC600xFZKjrfKTR0T0RUNlX/AODs/ifrfJHIQjFEK8iF2euNy6z7K3GNv82DJgTjYZZktqA==
+      integrity: sha512-+xxeaKwQJyXHBdMhVhqFoGqNAAUW5vr2DbhQEusER2RR4H2m+Zn2QLKiwp43BabNhQBITQ3bp54+DYrGrI+wmA==
   /caseless/0.12.0:
     dev: false
     resolution:
@@ -302,7 +303,7 @@ packages:
     dependencies:
       ansi-regex: 2.1.1
       d: 1.0.0
-      es5-ext: 0.10.48
+      es5-ext: 0.10.49
       es6-iterator: 2.0.3
       memoizee: 0.4.14
       timers-ext: 0.1.7
@@ -394,7 +395,7 @@ packages:
       integrity: sha512-a+EPoD+uZiNfh+5fxw2nO9QwFa6nJe2Or35fGY6Ipw1R3R4AGz1d1TEZrCegvw2YTmZ0jXirGYlzxxpYSHwpEg==
   /d/1.0.0:
     dependencies:
-      es5-ext: 0.10.48
+      es5-ext: 0.10.49
     dev: false
     resolution:
       integrity: sha1-dUu1v+VUUdpppYuU1F9MWwRi1Y8=
@@ -526,7 +527,7 @@ packages:
       integrity: sha1-+hN8S9aY7fVc1c0CrFWfkaTEups=
   /discord-youtube-api/0.1.0:
     dependencies:
-      iso8601-duration: 1.1.7
+      iso8601-duration: 1.2.0
       snekfetch: 3.6.4
     dev: false
     resolution:
@@ -636,18 +637,18 @@ packages:
     dev: false
     resolution:
       integrity: sha512-f2LZMYl1Fzu7YSBKg+RoROelpOaNrcGmE9AZubeDfrCEia483oW4MI4VyFd5VNHIgQ/7qm1I0wUHK1eJnn2y2w==
-  /es5-ext/0.10.48:
+  /es5-ext/0.10.49:
     dependencies:
       es6-iterator: 2.0.3
       es6-symbol: 3.1.1
       next-tick: 1.0.0
     dev: false
     resolution:
-      integrity: sha512-CdRvPlX/24Mj5L4NVxTs4804sxiS2CjVprgCmrgoDkdmjdY4D+ySHa7K3jJf8R40dFg0tIm3z/dk326LrnuSGw==
+      integrity: sha512-3NMEhi57E31qdzmYp2jwRArIUsj1HI/RxbQ4bgnSB+AIKIxsAmTiK83bYMifIcpWvEc3P1X30DhUKOqEtF/kvg==
   /es6-iterator/2.0.3:
     dependencies:
       d: 1.0.0
-      es5-ext: 0.10.48
+      es5-ext: 0.10.49
       es6-symbol: 3.1.1
     dev: false
     resolution:
@@ -655,14 +656,14 @@ packages:
   /es6-symbol/3.1.1:
     dependencies:
       d: 1.0.0
-      es5-ext: 0.10.48
+      es5-ext: 0.10.49
     dev: false
     resolution:
       integrity: sha1-vwDvT9q2uhtG7Le2KbTH7VcVzHc=
   /es6-weak-map/2.0.2:
     dependencies:
       d: 1.0.0
-      es5-ext: 0.10.48
+      es5-ext: 0.10.49
       es6-iterator: 2.0.3
       es6-symbol: 3.1.1
     dev: false
@@ -687,7 +688,7 @@ packages:
   /event-emitter/0.3.5:
     dependencies:
       d: 1.0.0
-      es5-ext: 0.10.48
+      es5-ext: 0.10.49
     dev: false
     resolution:
       integrity: sha1-34xp7vFkeSPHFXuc6DhAYQsCzDk=
@@ -1046,10 +1047,10 @@ packages:
     dev: false
     resolution:
       integrity: sha1-6PvzdNxVb/iUehDcsFctYz8s+hA=
-  /iso8601-duration/1.1.7:
+  /iso8601-duration/1.2.0:
     dev: false
     resolution:
-      integrity: sha512-vH8UmELp9cRY3RGPM/E7x8d2uY5/1yMzuphia7YbRBrQFN7HiQll/2syPV23wD/7J2hVZVHHpI+Vi49LjiLYUA==
+      integrity: sha512-ErTBd++b17E8nmWII1K1uZtBgD1E8RjyvwmxlCjPHNqHMD7gmcMHOw0E8Ro/6+QT4PhHRSnnMo7bxa1vFPkwhg==
   /isstream/0.1.2:
     dev: false
     resolution:
@@ -1139,7 +1140,7 @@ packages:
       integrity: sha512-XsP+KhQif4bjX1kbuSiySJFNAehNxgLb6hPRGJ9QsUr8ajHkuXGdrHmFUTUUXhDwVX2R5bY4JNZEwbUiMhV+MA==
   /lru-queue/0.1.0:
     dependencies:
-      es5-ext: 0.10.48
+      es5-ext: 0.10.49
     dev: false
     resolution:
       integrity: sha1-Jzi9nw089PhEkMVzbEhpmsYyzaM=
@@ -1162,7 +1163,7 @@ packages:
       - node-pre-gyp
       - rimraf
     dependencies:
-      nan: 2.12.1
+      nan: 2.13.1
       readable-stream: 2.3.6
     dev: false
     engines:
@@ -1197,7 +1198,7 @@ packages:
   /memoizee/0.4.14:
     dependencies:
       d: 1.0.0
-      es5-ext: 0.10.48
+      es5-ext: 0.10.49
       es6-weak-map: 2.0.2
       event-emitter: 0.3.5
       is-promise: 2.1.0
@@ -1295,10 +1296,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-bAdJv7fBLhWC+/Bls0Oza+mvTaNQtP+1RyhhhvD95pgUJz6XM5IzgmxOkItJ9tkoCiplvAnXI1tNmmUD/eScyA==
-  /nan/2.12.1:
+  /nan/2.13.1:
     dev: false
     resolution:
-      integrity: sha512-JY7V6lRkStKcKTvHO5NVSQRv+RV+FIL5pvDoLiAtSL9pKlC5x9PKQcZDsq7m4FO4d57mkhC6Z+QhAh3Jdk5JFw==
+      integrity: sha512-I6YB/YEuDeUZMmhscXKxGgZlFnhsn5y0hgOZBadkzfTRrZBtJDZeg6eQf7PYMIEclwmorTKK8GztsyOUSVBREA==
   /needle/2.2.4:
     dependencies:
       debug: 2.6.9
@@ -1756,7 +1757,7 @@ packages:
       integrity: sha1-tf3AjxKH6hF4Yo5BXiUTK3NkbG0=
   /simple-youtube-api/5.1.1:
     dependencies:
-      iso8601-duration: 1.1.7
+      iso8601-duration: 1.2.0
       node-fetch: 2.3.0
     dev: false
     resolution:
@@ -1771,6 +1772,21 @@ packages:
     dev: false
     resolution:
       integrity: sha512-dyycG9fvwtSJqKPfMVOpXt+60qvMGe7vWLwOJDiSJaiAx+hs2EnFChG2bXCWn7ulz+zGzrHdN9/yeEb0YqEPww==
+  /sql-template-strings/2.2.2:
+    dev: false
+    engines:
+      node: '>=4.0.0'
+    optional: true
+    resolution:
+      integrity: sha1-PxFQiiWt384hejBCqdMAwxk7lv8=
+  /sqlite/3.0.2:
+    dependencies:
+      sqlite3: 4.0.6
+    dev: false
+    optionalDependencies:
+      sql-template-strings: 2.2.2
+    resolution:
+      integrity: sha512-catQuNRzqiLcMBLKM4oSM+Toim9yrHKhsrh2iOgIvyOvKVOqXmOmOZpH3gnAecGCkqQ+DjbPCJczpJNnFzYq6Q==
   /sqlite3/4.0.6:
     dependencies:
       nan: 2.10.0
@@ -1926,7 +1942,7 @@ packages:
       integrity: sha1-DdTJ/6q8NXlgsbckEV1+Doai4fU=
   /timers-ext/0.1.7:
     dependencies:
-      es5-ext: 0.10.48
+      es5-ext: 0.10.49
       next-tick: 1.0.0
     dev: false
     resolution:
@@ -2113,12 +2129,12 @@ registry: 'https://registry.npmjs.org/'
 shrinkwrapMinorVersion: 9
 shrinkwrapVersion: 3
 specifiers:
-  canvas: ^2.3.1
-  canvas-constructor: ^2.1.1
+  canvas: ^2.4.0
+  canvas-constructor: ^3.0.0
   discord-youtube-api: ^0.1.0
   discord.js: ^11.4.2
   discord.js-commando: ^0.10.0
-  discord.js-musicbot-addon: ^13.4.3
+  discord.js-musicbot-addon: ^13.4.5
   express: ^4.16.4
   ffmpeg-binaries: ^4.0.0
   lyricist: ^2.2.2
@@ -2130,6 +2146,7 @@ specifiers:
   rebuild: ^0.1.2
   simple-youtube-api: ^5.1.1
   snekfetch: ^4.0.4
+  sqlite: ^3.0.2
   sqlite3: ^4.0.6
   superagent: ^4.1.0
   wiring-op: ^2.1.1
