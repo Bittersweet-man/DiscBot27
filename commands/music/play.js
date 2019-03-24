@@ -4,23 +4,23 @@ const ytdl = require("ytdl-core");
 const YouTube = require("simple-youtube-api");
 const config = require("../../config.json");
 
-
 module.exports = class PlayCommand extends commando.Command {
 
     constructor(client) {
-        super(client, {
-            name: 'play',
-            group: 'music',
-            memberName: 'play',
-            description: 'Plays music by url or query',
-            examples: ['!play https://www.youtube.com/watch?v=tjpsedQ-ZbI', '!play despacito']
-        });
+        super(client,
+            {
+                name: 'play',
+                group: 'music',
+                memberName: 'play',
+                description: 'Plays music by url or query',
+                examples: ['!play https://www.youtube.com/watch?v=tjpsedQ-ZbI', '!play despacito']
+            });
     }
 
     async run(message, args) {
 
         // Only works in guilds
-        if (!message.guild) return;
+        if (message.guild) return;
 
         // Only works if you're in a voice channel
         if (!message.member.voiceChannel) {
@@ -71,10 +71,7 @@ module.exports = class PlayCommand extends commando.Command {
                 })
                 .catch(console.error);
         }
-        const api = new YouTube(config.youtubeKey);
-        let video = await api.searchVideos(splitted.join(" "), 5)
-        let title = video.title
-        console.log(title)
+
         // Push url to queue
         server.queue.push(url);
 
@@ -90,13 +87,10 @@ module.exports = class PlayCommand extends commando.Command {
         }
     }
 }
-
 function Play(connection, message) {
     let server = servers.get(message.guild.id);
 
-    server.dispatcher = connection.playStream(ytdl(server.queue[0], {
-        filter: "audioonly"
-    }));
+    server.dispatcher = connection.playStream(ytdl(server.queue[0], { filter: "audioonly" }));
 
     server.dispatcher.on('end', function () {
 
@@ -108,7 +102,8 @@ function Play(connection, message) {
             Play(connection, message);
         }
         // Else disconnect
-        else {
+        else 
+        {
             connection.disconnect();
         }
     });

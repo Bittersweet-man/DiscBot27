@@ -1,4 +1,28 @@
+// server.js
+// where your node app starts
+
+// init project
+const express = require('express');
+const app = express();
+
+// we've started you off with Express, 
+// but feel free to use whatever libs or frameworks you'd like through `package.json`.
+
+// http://expressjs.com/en/starter/static-files.html
+app.use(express.static('public'));
+
+// http://expressjs.com/en/starter/basic-routing.html
+app.get('/', function(request, response) {
+  response.sendFile(__dirname + '/display.txt');
+});
+
+// listen for requests :)
+const listener = app.listen(process.env.PORT, function() {
+  console.log('Your app is listening on port ' + listener.address().port);
+});
+
 const Commando = require('discord.js-commando');
+
 
 
 const bot = new Commando.Client({
@@ -14,6 +38,7 @@ const config = require("./config.json")
 const TOKEN = config.token;
 const sql = require("sqlite3")
 const db = new sql.Database("./1xptest.db")
+var presence = 0
 
 //db.run("CREATE TABLE table_name (id integer, xp integer, level integer, color string, name string)");
 //db.run("INSERT INTO table_name (id, level) VALUES (413754421365964800, 4)");
@@ -34,19 +59,34 @@ bot.registry.registerCommandsIn(__dirname + '/commands');
 bot.login(TOKEN);
 
 
+
+function presenceChange(guild) {
+  
+if(presence == 0){
+    bot.user.setActivity("Type ?help", {type: 'WATCHING'})
+    presence = 1
+  setTimeout(presenceChange, 2500)
+    return;
+}
+  if(presence == 1){
+    const guild = bot.guilds.get("465707591910162432")
+    bot.user.setActivity(`${guild.memberCount} users!`, {type: 'WATCHING'})
+    presence = 0
+  setTimeout(presenceChange, 2500)
+    return;
+}
+  
+}
+
 var playQueue = [];
 global.servers = new discord.Collection();
 bot.on('ready', () => {
-    console.log("Ready");
-const channel = bot.channels.get('538707114781179904')
-
-
+    console.log(`Logged in as ${bot.user.tag}!`)
+  const guild = bot.guilds.get("465707591910162432")
+          var channel = guild.channels.find(channel => channel.id === "538707114781179904")
 
     channel.send("I am online!")
-    bot.user.setActivity("Type ?help", {
-        type: 'PLAYING'
-    })
-    console.log(`Logged in as ${bot.user.tag}!`)
+  presenceChange(guild)
 })
 
 bot.on("guildMemberAdd", function (member) {
@@ -117,27 +157,8 @@ bot.on('message', function (message) {
         db.run(`UPDATE table_name SET xp=${test}, level=${curLvl}, name="${message.member.displayName}" WHERE id=${message.author.id}`)
 
     })
-
-
   
-  if(message.content == "test") {
-    db.each(`SELECT * FROM table_name WHERE id=${message.author.id}`, function (err, row) {
-            console.log(row)
-      if(err) console.log(err)
-      if(row != []){
-       console.log("in db") 
-        message.channel.send("in db")
   
-        return;
-      }
-      if(row = null){
-        console.log("not in db")
-        message.channel.send("not in db")
-      }
-
-    })
-  
-  }
 
     if (message.content == "insert") {
         var user = message.member.displayName

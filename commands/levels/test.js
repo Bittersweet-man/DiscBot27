@@ -59,13 +59,13 @@ class testCommand extends Commando.Command {
             //message.channel.send(message.guild.iconURL)
      
 
-            ctx.font = '50px sans-serif';
+            ctx.font = '45px sans-serif';
             ctx.fillStyle = '#000000';
-            ctx.fillText(`${leaderboard.name}`, 25, ypos);
-            ctx.font = '40px sans-serif';
+            ctx.fillText(`${place}. ${leaderboard.name}`, 25, ypos);
+            ctx.font = '35px sans-serif';
             ctx.fillStyle = '#000000';
             ctx.fillText(`Level ${leaderboard.level}`, 25, ypos2);
-             ctx.font = '40px sans-serif';
+             ctx.font = '35px sans-serif';
             ctx.fillStyle = '#000000';
             ctx.fillText(`XP ${leaderboard.xp}`, 300, ypos2);
 
